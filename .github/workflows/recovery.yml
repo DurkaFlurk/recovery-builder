@@ -13,12 +13,12 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-  DEVICE: vince
-  DT_LINK: https://github.com/Bhav06/android_device_xiaomi_vince-twrp.git -b android-11.0
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+  DEVICE: Power_Armor14_Pro
+  DT_LINK: https://github.com/DurkaFlurk/android_device_REL.git -b main
   DT_PATH: device/xiaomi/vince
   TARGET: recoveryimage
-  TZ: Asia/Kolkata
+  TZ: europe
 
 jobs:
   build:
@@ -61,6 +61,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: v1.0.1
-          name: TWRP-3.7.0_11.1 (Vince)
+          name: TWRP-3.7.0_11.1 (REL)
           files: | 
-            work/out/target/product/vince/recovery.img
+            work/out/target/product/Power_Armor14_Pro/recovery.img

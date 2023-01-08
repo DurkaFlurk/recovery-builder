@@ -15,7 +15,7 @@ on:
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
   DEVICE: Power_Armor14_Pro
-  DT_LINK: https://github.com/DurkaFlurk/android_device_Power_Armor14_Pro.git -b main
+  DT_LINK: https://github.com/DurkaFlurk/android_device_REL -b main
   DT_PATH: device/ulefone/power_armor14_pro
   TARGET: bootimage
   TZ: us

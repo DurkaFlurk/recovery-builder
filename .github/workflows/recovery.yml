@@ -15,10 +15,10 @@ on:
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
   DEVICE: Power_Armor14_Pro
-  DT_LINK: https://github.com/DurkaFlurk/android_device_REL.git -b main
-  DT_PATH: device/xiaomi/vince
-  TARGET: recoveryimage
-  TZ: europe
+  DT_LINK: https://github.com/DurkaFlurk/android_device_Power_Armor14_Pro.git -b main
+  DT_PATH: device/ulefone/power_armor14_pro
+  TARGET: bootimage
+  TZ: us
 
 jobs:
   build:
@@ -33,8 +33,8 @@ jobs:
          run: |
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
             docker rmi `docker images -q`
-            git config --global user.name "Bhav06"
-            git config --global user.email "bhavgupta200@gmail.com"         
+            git config --global user.name "DurkaFlurk"
+            git config --global user.email "simcoe185@gmail.com"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
             sudo -E apt-get clean
             sudo -E apt-get -qq update
@@ -53,7 +53,7 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch twrp_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
@@ -63,4 +63,4 @@ jobs:
           tag_name: v1.0.1
           name: TWRP-3.7.0_11.1 (REL)
           files: | 
-            work/out/target/product/Power_Armor14_Pro/recovery.img
+            work/out/target/product/Power_Armor14_Pro/boot.img
